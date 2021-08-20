@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: explorecali-app-deployment
+  labels:
+    app: explorecali-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: explorecali-app
+  template:
+    metadata:
+      labels:
+        app: explorecali-app
+    spec:
+      containers:
+        - name: ec-mysql
+          image: pxavier12/test_env
+          ports:
+            - containerPort: 8080
+          env:
+            - name: server
+              value: explorecali-db-service
+            - name: port
+              value: '6604'
+            - name: dbuser
+              valueFrom:
+                secretKeyRef:
+                  name: explorecali-db-secret
+                  key: MYSQL_USER
+            - name: dbpassword
+              valueFrom:
+                secretKeyRef:
+                  name: explorecali-db-secret
+                  key: MYSQL_PASSWORD
+          
+

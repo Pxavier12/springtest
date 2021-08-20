@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: explorecali-db-deployment
+  labels:
+    app: explorecali-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: explorecali-db
+  template:
+    metadata:
+      labels:
+        app: explorecali-db
+    spec:
+      containers:
+      - name: ec-mysql
+        image: mysql
+        ports:
+          - containerPort: 6604
+        env:
+          - name: MYSQL_DATABASE
+            value: explorecali
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom: 
+              secretKeyRef:
+                name: explorecali-db-secret
+                key: MYSQL_ROOT_PASSWORD
+          - name: MYSQL_USER
+            valueFrom: 
+              secretKeyRef:
+                name: explorecali-db-secret
+                key: MYSQL_USER
+          - name: MYSQL_PASSWORD
+            valueFrom: 
+              secretKeyRef:
+                name: explorecali-db-secret
+                key: MYSQL_PASSWORD
+          
+
