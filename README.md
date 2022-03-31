@@ -11,9 +11,8 @@ Install NodeJS For Mac/Windows/Linux
 cd to cloned repo app 
 #### Npm command
 ##### Install Dependencies
-``
-npm install
-``
+
+### `npm install`
 
 In the project directory, you can run:
 
