@@ -2,10 +2,14 @@
 # 🚀 SpaceX Launcher 🚀
 SpaceX Launches Blog created with React, Vite and Chakra-ui.
 
-Install NodeJS For Mac/Windows/Linux
+
 
 #### Setup
+
+Install NodeJS For Mac/Windows/Linux
+
 cd to cloned repo app 
+
 #### Npm command
 ##### Install Dependencies
 
